@@ -21,7 +21,8 @@
                 return;
             }
         }
-        printf("Error type B at Line %d: %s,yytext:%s.\n", yylineno, msg,yytext);
+        //printf("Error type B at Line %d: %s,yytext:%s.\n", yylineno, msg,yytext);
+        printf("Error type B at Line %d: %s\n", yylineno, msg);
         syntax_error++;
         wrong_line[wrong_lin_num++] = yylineno;
     }

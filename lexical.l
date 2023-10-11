@@ -28,6 +28,8 @@
         printf("Error type A at Line %d: %s.\n", yylineno, msg);
     }
 
+    //extern void yyerror(char *msg);
+
     void add_yy_node(char *name, char *val, data_type type, int token_flag, int line, int num, ...){
         yylval.node = (struct Node*)add_node(name, val, type, token_flag, line, num);
     }
@@ -244,20 +246,27 @@ ID      {letter}({digit}|{letter})*
     print_error_msg_A("error float");
     return ID;
 }
-"//"[^"\n"]* {
+"//"[^"\n"]* {  
     //print_error_msg_A("Can't recognize the annotation");
+    yyerror("Can't recognize the annotation");
 }
 "/*"         { 
     //print_error_msg_A("Can't recognize the annotation");
+    yyerror("Can't recognize the annotation");
     BEGIN(COMMENT); 
 }  /* 当匹配到 "/*"，进入COMMENT状态 */
 <COMMENT>"*/"   { 
     //print_error_msg_A("Can't recognize the annotation");
+    yyerror("Can't recognize the annotation");
     BEGIN(INITIAL); 
 } /* 当在COMMENT状态中匹配到 * /返回到INITIAL状态 */
-<COMMENT>.|\n  { /* 这里什么也不做，因此注释中的内容会被忽略 */ }
+<COMMENT>.|\n  { 
+    //("Can't recognize the annotation");
+    yyerror("Can't recognize the comment of annotation");
+    /* 这里什么也不做，因此注释中的内容会被忽略 */ 
+}
 Mysterious  {
-    print_error_msg_A("Mysterious character");
+    //print_error_msg_A("Mysterious character");
     return ID;
 }
 "\n"        { yycolumn = 1; }
