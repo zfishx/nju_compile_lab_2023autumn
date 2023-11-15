@@ -40,7 +40,7 @@ void print_AST(Node *root, int depth)
 
 Node *add_node(char *name, char *val, data_type type, int token_flag, int line, int num, ...)
 {
-    //printf("add node: %s ", name);
+    //("add node: %s ", name);
     Node *node = (Node *)malloc(sizeof(Node));
     strcpy(node->name, name);
     node->type = type;
@@ -79,6 +79,12 @@ Node *add_node(char *name, char *val, data_type type, int token_flag, int line, 
         else if (type == type_type)
         {
             strcpy(node->val.val_id, val);
+        }
+        else if (type == other)
+        {
+            if(strcmp(name,"RELOP") == 0) {
+                strcpy(node->val.val_id, val);
+            }
         }
     }
     if (num > 0)
