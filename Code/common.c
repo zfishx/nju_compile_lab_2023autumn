@@ -40,7 +40,7 @@ void print_AST(Node *root, int depth)
 
 Node *add_node(char *name, char *val, data_type type, int token_flag, int line, int num, ...)
 {
-    //printf("add node: %s ", name);
+    //("add node: %s ", name);
     Node *node = (Node *)malloc(sizeof(Node));
     strcpy(node->name, name);
     node->type = type;

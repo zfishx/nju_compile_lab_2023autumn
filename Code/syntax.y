@@ -113,7 +113,6 @@ ExtDef : Specifier ExtDecList SEMI                  {
                                                        //printf("debug-4");
                                                     }
     | Specifier FunDec CompSt                       { $$=add_node("ExtDef",NULL,other, 0, @$.first_line,3,$1,$2,$3); }
-    | Specifier FunDec SEMI                         { $$=add_node("ExtDef",NULL,other, 0, @$.first_line,3,$1,$2,$3); }
     | error SEMI                            { yyerrok; }
     | Specifier error SEMI                  { yyerrok; }
     | Specifier error CompSt                { yyerrok; }

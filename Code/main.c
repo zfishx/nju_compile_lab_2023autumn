@@ -39,7 +39,8 @@ int main(int argc, char** argv)
     yyparse();
     //printf("After yyparse()\n");
     if(lex_error == 0 && syntax_error == 0){
-        print_AST(root,0);
+        //print_AST(root,0);
+        semantic_check(root);
         //printf("syntax_error: %d\n",syntax_error);
     } 
     else{
