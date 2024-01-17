@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Node Node;
-
 typedef enum
 {
     type_int = 1,
@@ -17,21 +15,21 @@ typedef enum
     other = 7
 } data_type;
 
-struct Node
+typedef struct
 {
     char name[35];  //每个节点的名字
     data_type type; //每个节点的类型
     int line;       //每个节点的行号
     int token_flag; //是否是终结符
-    union Value
+    union
     {
         int val_int;
         float val_float;
         char val_id[35];
     } val;                //每个节点的值
-    struct Node* child;   //每个节点的孩子节点
-    struct Node* brother; //每个节点的兄弟节点
-};
+    struct Node *child;   //每个节点的孩子节点
+    struct Node *brother; //每个节点的兄弟节点
+} Node;
 
 Node *add_node(char *name, char *val, data_type type, int token_flag, int line, int num, ...);
 

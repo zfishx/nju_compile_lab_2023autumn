@@ -24,8 +24,8 @@
     void print_error_msg_A(char *msg){
         lex_error++;
         //wrong_line[wrong_lin_num++] = yylineno;
-        printf("Error type A at Line %d: %s near: %s.\n", yylineno, msg ,yytext);
-        //printf("Error type A at Line %d: %s.\n", yylineno, msg);
+        //printf("Error type A at Line %d: %s %s.\n", yylineno, msg ,yytext);
+        printf("Error type A at Line %d: %s.\n", yylineno, msg);
     }
 
     //extern void yyerror(char *msg);
